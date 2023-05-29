@@ -13,10 +13,11 @@ class KittensController < ApplicationController
   end
 
   def index
+    @kittens = Kitten.all
   end
 
   def show
-    @kitten = Kitten.find_by(id: params[:id])
+    @kitten = Kitten.find(params[:id])
   
     if @kitten.nil?
       redirect_to new_kitten_path, notice: "Kitten does not exist! Create a New one :"
@@ -26,9 +27,17 @@ class KittensController < ApplicationController
   end
 
   def edit
+    @kitten = Kitten.find(params[:id])
   end
 
   def update
+    @kitten = Kitten.find(params[:id])
+
+    if @kitten.update(kitten_params)
+      redirect_to @kitten
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def delete
