@@ -8,10 +8,11 @@
 
     <br>
     <%= f.label :cuteness %>
-    <%= f.range_field :age, in: 1..10, step: 1 %>
+    <%= f.number_field :age, in: 1..10 %>
     
     <br>
     <%= f.label :softness %>
-    <%= f.range_field :age, in: 1..10, step: 1 %>
+    <%= f.number_field :age, in: 1..10 %>
 
+    <%= f.submit "Meow!" %>
 <% end %>
