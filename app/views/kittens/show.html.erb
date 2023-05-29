@@ -1,5 +1,9 @@
-<h1> <%= @kitten.name %> </h1>
+<%= link_to "Home", kittens_path %>
+
+<h1> <%= @kitten.name %> (ID : <%= @kitten.id %>) </h1>
 
 <div>Age : <%= @kitten.age %>  </div>
 <div>Cuteness : <%= @kitten.cuteness %>  </div>
 <div>Softness : <%= @kitten.softness %>  </div>
+
+<%= link_to "Click here to Edit : #{@kitten.name}", edit_kitten_path(@kitten) %>
