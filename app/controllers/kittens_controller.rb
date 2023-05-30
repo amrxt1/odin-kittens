@@ -6,6 +6,7 @@ class KittensController < ApplicationController
   def create
     @kitten = Kitten.new(kitten_params)
     if @kitten.save
+        flash[:notice] = "#{@kitten.name} says : 'Hello World!'"
         redirect_to @kitten
     else
         render :new, status: :unprocessable_entity
@@ -42,6 +43,7 @@ class KittensController < ApplicationController
 
   def destroy
     @kitten = Kitten.find( params[:id] )
+    flash[:notice] = "R.I.P. #{@kitten.name}"
     @kitten.destroy
 
     redirect_to root_path
