@@ -15,6 +15,13 @@ class KittensController < ApplicationController
 
   def index
     @kittens = Kitten.all
+
+
+    respond_to do |format|
+        format.html
+        format.json { render :json => @kittens }
+    end
+
   end
 
   def show
@@ -23,7 +30,10 @@ class KittensController < ApplicationController
     if @kitten.nil?
       redirect_to new_kitten_path, notice: "Kitten does not exist! Create a New one :"
     else
-      render :show
+        respond_to do |format|
+            format.html
+            format.json { render :json => @kitten }
+        end
     end
   end
 
